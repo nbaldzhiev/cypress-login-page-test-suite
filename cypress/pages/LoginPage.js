@@ -1,4 +1,4 @@
-import LoginPageURL from '../support/e2e'
+const LoginPageURL = 'https://cloud.cypress.io/login';
 
 class LogInEmailForm {
 
@@ -24,10 +24,14 @@ class LogInEmailForm {
 
 class LoginPage {
 
+    constructor(pageUrl = LoginPageURL) {
+        this.pageUrl = pageUrl;
+    }
+
     visit() {
         // Opens the Login page if not already open
         if (cy.url() !== LoginPageURL) {
-            cy.visit('https://cloud.cypress.io/login');
+            cy.visit(this.pageUrl);
         }
     }
 
@@ -39,6 +43,11 @@ class LoginPage {
     getLogInWithGoogleButton() {
         // Gets and returns the "Log in with Google" button
         return cy.get('button[class*="provider-google"]');
+    }
+
+    getLogInWithSSOButton() {
+        // Gets and returns the "Log in with SSO" button
+        return cy.get('button[class*="provider-sso"]');
     }
 
     getLogInWithEmailButton() {
