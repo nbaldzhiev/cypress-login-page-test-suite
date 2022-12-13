@@ -70,11 +70,39 @@ class LoginPage {
         return cy.get('a[href="/signup"]');
     }
 
+    get logInForm() {
+        return new LogInEmailForm();
+    }
+
     openLoginWithEmail() {
         // Clicks on the "Log in with email" button and returns the form as an LogInEmailForm object
         this.visit();
         this.getLogInWithEmailButton().click();
-        return new LogInEmailForm();
+        return this.logInForm;
+    }
+
+    get assertThat() {
+        return new LoginPageAssertions(this);
+    }
+
+}
+
+class LoginPageAssertions {
+
+    constructor(logInPageObj) {
+        this.logInPageObj = logInPageObj;
+    }
+
+    allPageElementsAreVisible() {
+        this.logInPageObj.getLogInWithGithubButton().should('be.visible');
+        this.logInPageObj.getLogInWithGoogleButton().should('be.visible');
+        this.logInPageObj.getLogInWithSSOButton().should('be.visible');
+        this.logInPageObj.getLogInWithEmailButton().should('be.visible');
+        this.logInPageObj.getSignUpLink().should('be.visible');
+    }
+
+    logInFormErrorMessageExists() {
+        this.logInPageObj.logInForm.getErrorMessage().should('contain', 'Incorrect email address or password');
     }
 
 }
