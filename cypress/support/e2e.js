@@ -18,3 +18,5 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+export const LoginPageURL = 'https://cloud.cypress.io/login';
