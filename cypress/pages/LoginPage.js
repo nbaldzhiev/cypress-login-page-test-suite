@@ -3,18 +3,28 @@ const LoginPageURL = 'https://cloud.cypress.io/login';
 class LogInEmailForm {
 
     getEmailInput() {
+        // Gets and returns the Email input element
         return cy.get('input#email');
     }
 
     getPasswordInput() {
+        // Gets and returns the Password input element
         return cy.get('input#password');
     }
 
     getSubmitButton() {
+        // Gets and returns the Submit button
         return cy.get('button[type="submit"]');
     }
 
+    getErrorMessage(foundTimeout = 10000) {
+        // Gets and returns the error message present in case of an error
+        // Overrides the timeout for finding the element with 10 seconds
+        return cy.get('div[class="error-message"]', {timeout: foundTimeout})
+    }
+
     logIn(email, password) {
+        // Fills in the form by using the parameter values and submits
         this.getEmailInput().type(email);
         this.getPasswordInput().type(password);
         this.getSubmitButton().click();
