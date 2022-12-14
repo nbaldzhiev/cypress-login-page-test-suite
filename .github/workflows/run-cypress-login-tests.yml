@@ -8,4 +8,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install docker
         uses: docker-practice/actions-setup-docker@master
-      - run: ./runner.sh
+      - name: Run the tests inside a docker container
+        run: ./runner.sh
+      - name: Upload the HTML results file as a workflow artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: html-results-file
+          path: mochawesome-report/mochawesome.html

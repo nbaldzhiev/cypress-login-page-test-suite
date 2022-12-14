@@ -8,4 +8,7 @@ module.exports = defineConfig({
     viewportWidth: 1920,
   },
   reporter: "mochawesome",
+  reporterOptions: {
+    overwrite: false,
+  }
 });
