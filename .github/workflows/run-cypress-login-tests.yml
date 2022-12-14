@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 16
         if: "${{ github.event.inputs.run-in-container != 'true' }}"
+      - name: Run npm install
+        run: npm install
+        if: "${{ github.event.inputs.run-in-container != 'true' }}"
       - name: Run the tests inside a docker container
         run: ./runner.sh
         if: ${{ inputs.run-in-container }}
