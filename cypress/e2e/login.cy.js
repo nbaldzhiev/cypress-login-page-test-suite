@@ -7,7 +7,8 @@ describe("Log In Page", () => {
   beforeEach(() => {
     // Clear the cookies and open the log in page before each test
     cy.clearCookies();
-    cy.visit("/");
+    const loginPage = new LoginPage();
+    loginPage.visit();
   });
 
   it("All Expected Elements Are Visible", () => {

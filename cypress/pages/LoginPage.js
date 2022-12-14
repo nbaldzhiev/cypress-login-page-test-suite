@@ -1,3 +1,5 @@
+const LoginPageURL = "https://cloud.cypress.io/login";
+
 class LogInEmailForm {
   get emailInput() {
     // Gets and returns the Email input element
@@ -29,6 +31,17 @@ class LogInEmailForm {
 }
 
 class LoginPage {
+  constructor(pageUrl = LoginPageURL) {
+    this.pageUrl = pageUrl;
+  }
+
+  visit() {
+    // Opens the Login page if not already open
+    if (cy.url() !== LoginPageURL) {
+      cy.visit(this.pageUrl);
+    }
+  }
+
   get logInWithGithubButton() {
     // Gets and returns the "Log in with GitHub" button
     return cy.get('button[class*="provider-github"]');
