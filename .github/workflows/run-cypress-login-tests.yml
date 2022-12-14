@@ -5,7 +5,7 @@ on:
     inputs:
       run-in-container:
         description: "Run tests in a Docker container"
-        default: true
+        default: false
         type: boolean
 jobs:
   run-tests:

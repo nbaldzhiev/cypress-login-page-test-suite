@@ -100,11 +100,11 @@ class LoginPageAssertions {
 
   allPageElementsAreVisible() {
     // Asserts that all expected elements on the page are visible
-    this.logInPageObj.logInWithGithubButton.should("be.visible");
-    this.logInPageObj.logInWithGoogleButton.should("be.visible");
-    this.logInPageObj.logInWithSSOButton.should("be.visible");
-    this.logInPageObj.logInWithEmailButton.should("be.visible");
-    this.logInPageObj.signUpLink.should("be.visible");
+    cy.elementIsVisible(this.logInPageObj.logInWithGithubButton);
+    cy.elementIsVisible(this.logInPageObj.logInWithGoogleButton);
+    cy.elementIsVisible(this.logInPageObj.logInWithSSOButton);
+    cy.elementIsVisible(this.logInPageObj.logInWithEmailButton);
+    cy.elementIsVisible(this.logInPageObj.signUpLink);
   }
 
   logInFormErrorMessageExists() {
