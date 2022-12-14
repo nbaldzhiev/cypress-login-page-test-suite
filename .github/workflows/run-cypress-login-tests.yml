@@ -12,8 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install docker
+      - name: Set up Docker
         uses: docker-practice/actions-setup-docker@master
+        if: ${{ inputs.run-in-container }}
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+        if: "${{ github.event.inputs.run-in-container != 'true' }}"
       - name: Run the tests inside a docker container
         run: ./runner.sh
         if: ${{ inputs.run-in-container }}
