@@ -26,7 +26,7 @@ if docker info ; then
     docker build --tag $IMAGE_NAME .
     echo 'Successfully built the docker image!'
   fi
-  docker run -d $IMAGE_NAME
+  docker run -t -d $IMAGE_NAME
   echo 'Ran the container in detached mode.'
   CONTAINER_ID=$(docker ps | grep $IMAGE_NAME | awk '{print $1}')
   while ! docker container exec -it $CONTAINER_ID ls mochawesome-report
