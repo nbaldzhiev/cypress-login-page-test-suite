@@ -36,9 +36,9 @@ if docker info ; then
   done
   echo 'cypress has completed!'
   rm -rf mochawesome-report/
-  echo 'Cleaned any existing results/ folders...'
+  echo 'Cleaned any existing mochawesome-report/ folders...'
   docker cp $CONTAINER_ID:/$APP_NAME/mochawesome-report .
-  echo 'Copied the results/ folder from the container to the localhost directory of the repo!'
+  echo 'Copied the mochawesome-report/ folder from the container to the localhost directory of the repo!'
   docker rm --force $CONTAINER_ID
   echo 'Forcefully removed the container.'
 else

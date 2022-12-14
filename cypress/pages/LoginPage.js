@@ -1,5 +1,3 @@
-const LoginPageURL = "https://cloud.cypress.io/login";
-
 class LogInEmailForm {
   get emailInput() {
     // Gets and returns the Email input element
@@ -31,17 +29,6 @@ class LogInEmailForm {
 }
 
 class LoginPage {
-  constructor(pageUrl = LoginPageURL) {
-    this.pageUrl = pageUrl;
-  }
-
-  visit() {
-    // Opens the Login page if not already open
-    if (cy.url() !== LoginPageURL) {
-      cy.visit(this.pageUrl);
-    }
-  }
-
   get logInWithGithubButton() {
     // Gets and returns the "Log in with GitHub" button
     return cy.get('button[class*="provider-github"]');
@@ -73,7 +60,6 @@ class LoginPage {
 
   openLogInWithEmail() {
     // Clicks on the "Log in with email" button and returns the form as an LogInEmailForm object
-    this.visit();
     this.logInWithEmailButton.click();
     return this.logInForm;
   }
@@ -89,6 +75,7 @@ class LoginPage {
   }
 
   get assertThat() {
+    // Returns a LoginPageAssertions object to get access to page assertions
     return new LoginPageAssertions(this);
   }
 }
@@ -99,6 +86,7 @@ class LoginPageAssertions {
   }
 
   allPageElementsAreVisible() {
+    // Asserts that all expected elements on the page are visible
     this.logInPageObj.logInWithGithubButton.should("be.visible");
     this.logInPageObj.logInWithGoogleButton.should("be.visible");
     this.logInPageObj.logInWithSSOButton.should("be.visible");
@@ -107,6 +95,7 @@ class LoginPageAssertions {
   }
 
   logInFormErrorMessageExists() {
+    // Asserts that the log in form's error message exists with the corrent content
     this.logInPageObj.logInForm
       .getErrorMessage()
       .should("contain", "Incorrect email address or password");

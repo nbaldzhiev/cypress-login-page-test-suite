@@ -13,5 +13,5 @@ jobs:
       - name: Upload the HTML results file as a workflow artifact
         uses: actions/upload-artifact@v3
         with:
-          name: html-results-file
+          name: mochawesome-report
           path: mochawesome-report/
