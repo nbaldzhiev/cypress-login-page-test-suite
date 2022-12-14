@@ -3,8 +3,8 @@ run-name: ${{ github.actor }} is running Cypress Login Tests
 on:
   workflow_dispatch:
     inputs:
-      run_in_container:
-        description: 'Controls whether tests are ran in a Docker container'
+      run-in-container:
+        description: 'Run tests in a Docker container'
         default: true
         type: boolean
 jobs:
@@ -16,10 +16,10 @@ jobs:
         uses: docker-practice/actions-setup-docker@master
       - name: Run the tests inside a docker container
         run: ./runner.sh
-        if: ${{ inputs.run_in_container }}
+        if: ${{ inputs.run-in-container }}
       - name: Run the tests without a container
         run: npm run cypress:run
-        if: ! ${{ inputs.run_in_container }}
+        if: ! ${{ inputs.run-in-container }}
       - name: Upload the HTML results file as a workflow artifact
         uses: actions/upload-artifact@v3
         with:
