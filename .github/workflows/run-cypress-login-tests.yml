@@ -19,7 +19,7 @@ jobs:
         if: ${{ inputs.run-in-container }}
       - name: Run the tests without a container
         run: npm run cypress:run
-        if: ! ${{ inputs.run-in-container }}
+        if: !${{ inputs.run-in-container }}
       - name: Upload the HTML results file as a workflow artifact
         uses: actions/upload-artifact@v3
         with:
