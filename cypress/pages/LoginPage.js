@@ -2,17 +2,17 @@ const LoginPageURL = 'https://cloud.cypress.io/login';
 
 class LogInEmailForm {
 
-    getEmailInput() {
+    get emailInput() {
         // Gets and returns the Email input element
         return cy.get('input#email');
     }
 
-    getPasswordInput() {
+    get passwordInput() {
         // Gets and returns the Password input element
         return cy.get('input#password');
     }
 
-    getSubmitButton() {
+    get submitButton() {
         // Gets and returns the Submit button
         return cy.get('button[type="submit"]');
     }
@@ -25,9 +25,9 @@ class LogInEmailForm {
 
     logIn(email, password) {
         // Fills in the form by using the parameter values and submits
-        this.getEmailInput().type(email);
-        this.getPasswordInput().type(password);
-        this.getSubmitButton().click();
+        this.emailInput.type(email);
+        this.passwordInput.type(password);
+        this.submitButton.click();
     }
 
 }
@@ -45,27 +45,27 @@ class LoginPage {
         }
     }
 
-    getLogInWithGithubButton() {
+    get logInWithGithubButton() {
         // Gets and returns the "Log in with GitHub" button
         return cy.get('button[class*="provider-github"]');
     }
     
-    getLogInWithGoogleButton() {
+    get logInWithGoogleButton() {
         // Gets and returns the "Log in with Google" button
         return cy.get('button[class*="provider-google"]');
     }
 
-    getLogInWithSSOButton() {
+    get logInWithSSOButton() {
         // Gets and returns the "Log in with SSO" button
         return cy.get('button[class*="provider-sso"]');
     }
 
-    getLogInWithEmailButton() {
+    get logInWithEmailButton() {
         // Gets and returns the "Log in with Email" button
         return cy.get('button[class*="provider-email"]');
     }
 
-    getSignUpLink() {
+    get signUpLink() {
         // Gets and returns the "Sign up" link
         return cy.get('a[href="/signup"]');
     }
@@ -74,11 +74,21 @@ class LoginPage {
         return new LogInEmailForm();
     }
 
-    openLoginWithEmail() {
+    openLogInWithEmail() {
         // Clicks on the "Log in with email" button and returns the form as an LogInEmailForm object
         this.visit();
-        this.getLogInWithEmailButton().click();
+        this.logInWithEmailButton.click();
         return this.logInForm;
+    }
+
+    openLogInWithGitHub() {
+        // Clicks on the Log in with GitHub button to open the page
+        this.logInWithGithubButton.click()
+    }
+
+    openLogInWithGoogle() {
+        // Clicks on the Log in with Google button to open the page
+        this.logInWithGoogleButton.click()
     }
 
     get assertThat() {
@@ -94,11 +104,11 @@ class LoginPageAssertions {
     }
 
     allPageElementsAreVisible() {
-        this.logInPageObj.getLogInWithGithubButton().should('be.visible');
-        this.logInPageObj.getLogInWithGoogleButton().should('be.visible');
-        this.logInPageObj.getLogInWithSSOButton().should('be.visible');
-        this.logInPageObj.getLogInWithEmailButton().should('be.visible');
-        this.logInPageObj.getSignUpLink().should('be.visible');
+        this.logInPageObj.logInWithGithubButton.should('be.visible');
+        this.logInPageObj.logInWithGoogleButton.should('be.visible');
+        this.logInPageObj.logInWithSSOButton.should('be.visible');
+        this.logInPageObj.logInWithEmailButton.should('be.visible');
+        this.logInPageObj.signUpLink.should('be.visible');
     }
 
     logInFormErrorMessageExists() {
