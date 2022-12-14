@@ -29,7 +29,7 @@ jobs:
       - name: Run the tests without a container
         run: npm run cypress:run
         if: "${{ github.event.inputs.run-in-container != 'true' }}"
-      - name: Upload the HTML results file as a workflow artifact
+      - name: Upload the mochawesome report as a workflow artifact
         uses: actions/upload-artifact@v3
         with:
           name: mochawesome-report
