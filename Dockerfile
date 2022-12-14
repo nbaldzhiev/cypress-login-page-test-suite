@@ -11,4 +11,4 @@ COPY cypress.config.js cypress.config.js
 
 RUN npm install
 
-CMD npx cypress run --reporter mochawesome && tail -f /dev/null
+CMD npm run cypress:run && tail -f /dev/null
