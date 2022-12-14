@@ -29,7 +29,7 @@ if docker info ; then
   docker run -t -d $IMAGE_NAME
   echo 'Ran the container in detached mode.'
   CONTAINER_ID=$(docker ps | grep $IMAGE_NAME | awk '{print $1}')
-  while ! docker container exec -iT $CONTAINER_ID ls mochawesome-report
+  while ! docker container exec $CONTAINER_ID ls mochawesome-report
   do
     echo 'Waiting for cypress to complete...'
     sleep $DEFAULT_INTERVAL_SEC
