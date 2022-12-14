@@ -19,6 +19,7 @@
 IMAGE_NAME='cypress-login-tests-image'
 APP_NAME='cypress-login-tests-app'
 DEFAULT_INTERVAL_SEC=0.5
+DEFAULT_TIMEOUT_SEC=300
 
 if docker info ; then
   if [[ $1 != 'False' ]] ; then
@@ -29,8 +30,14 @@ if docker info ; then
   docker run -t -d $IMAGE_NAME
   echo 'Ran the container in detached mode.'
   CONTAINER_ID=$(docker ps | grep $IMAGE_NAME | awk '{print $1}')
+  end=$((SECONDS+DEFAULT_TIMEOUT_SEC))
   while ! docker container exec $CONTAINER_ID ls mochawesome-report
   do
+    if [ $SECONDS -gt $end ]
+    then
+      echo 'ERROR - Could not wait for the test report to be generated!'
+      exit 1
+    fi
     echo 'Waiting for cypress to complete...'
     sleep $DEFAULT_INTERVAL_SEC
   done
