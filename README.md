@@ -21,18 +21,20 @@ can be found.
 
 ```
 $ git clone git@github.com:nbaldzhiev/cypress-login-page-test-suite.git && cd cypress-login-page-test-suite
-$ ./runner.sh
-```
-
-This runs the tests within a Docker container, which gets created out of an image based on the Dockerfile.
-
-To run the tests without Docker:
-
-```
-$ git clone git@github.com:nbaldzhiev/cypress-login-page-test-suite.git && cd cypress-login-page-test-suite
 $ npm install
 $ npm run cypress:run
 ```
+
+...runs the tests without a Docker container.
+
+
+```
+$ git clone git@github.com:nbaldzhiev/cypress-login-page-test-suite.git && cd cypress-login-page-test-suite
+$ ./runner.sh
+```
+
+... runs the tests within a Docker container, which gets created out of an image based on the Dockerfile.
+
 
 ## Tests Results
 
