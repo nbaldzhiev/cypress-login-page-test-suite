@@ -7,7 +7,6 @@
     "prettier": "2.8.1"
   },
   "scripts": {
-    "cypress:open": "cypress open",
     "cypress:run": "cypress run --reporter mochawesome"
   },
   "dependencies": {

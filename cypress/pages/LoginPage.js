@@ -1,3 +1,5 @@
+// This file contains a page model class abstraction of the Log in page of Cypress
+
 class LogInEmailForm {
   get emailInput() {
     // Gets and returns the Email input element
