@@ -1,6 +1,6 @@
 # Cypress Log In Page UI Tests
 
-A repository containing a UI tests for the Cypress Log In page, using Cypress.
+A repository containing a UI tests for the [Cypress Log In page](https://cloud.cypress.io/login), using [Cypress](https://www.cypress.io/).
 
 ## Usage
 
