@@ -47,7 +47,7 @@ When running from a GitHub Actions workflow, the directory is uploaded to the wo
 
 ## Test Cases
 
-The automated test cases can be found in cypress/e2e/login.cy.js.
+The automated test cases can be found in `cypress/e2e/login.cy.js`.
 
 1. All Expected Elements Are Visible - verifies that all expected elements on the page are visible.
 2. Non-existent Users Cannot Log In via Email - verifies that a non-registered user cannot log in and a proper error message is displayed.
